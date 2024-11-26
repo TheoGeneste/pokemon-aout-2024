@@ -283,3 +283,8 @@ button:hover{
     border-radius: 25px;
     padding: 10px;
 }
+
+.dropdown-menu{
+    height: 200px;
+    overflow-y: auto;
+}

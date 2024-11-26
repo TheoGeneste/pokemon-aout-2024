@@ -16,9 +16,14 @@ function getPokemonSpecieDetail(name){
     return axios.get('https://pokeapi.co/api/v2/pokemon-species/'+name);
 }
 
+function getPokemonByType(type){
+    return axios.get('https://pokeapi.co/api/v2/type/'+type);
+}
+
 export default {
     getAllPokemon,
     getPokemonPagination,
     getPokemonDetail,
-    getPokemonSpecieDetail
+    getPokemonSpecieDetail,
+    getPokemonByType
 }
