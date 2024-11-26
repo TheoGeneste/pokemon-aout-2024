@@ -10,7 +10,7 @@ const PokemonCard = ({pokemonB}) => {
             <Card.Body>
                 {/* https://pokeapi.co/api/v2/pokemon/808/ */}
                 {/* 808/ */}
-                <Card.Title>{pokemonB.name} #{pokemonB.url.replace("https://pokeapi.co/api/v2/pokemon/", "").replace("/", "")}</Card.Title>
+                <Card.Title>{pokemonB.name} #{pokemonB.url.replace("https://pokeapi.co/api/v2/pokemon/", "").replace("https://pokeapi.co/api/v2/pokemon-species/", "").replace("/", "")}</Card.Title>
                 {/* <Button variant="primary">Voir le Pokemon</Button> */}
             </Card.Body>
         </Card>
