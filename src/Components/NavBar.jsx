@@ -4,12 +4,14 @@ import TypeService from "../Services/TypeService";
 import { useEffect, useState } from "react";
 import GenerationService from "../Services/GenerationService";
 import VersionService from "../Services/VersionService";
+import HabitatService from "../Services/HabitatService";
 
 const NavBar = () => {
     const navigate = useNavigate();
     const [types, setTypes] = useState([]);
     const [generations, setGenerations] = useState([]);
     const [versions, setVersions] = useState([]);
+    const [habitats, setHabitats] = useState([]);
 
     const fetchTypes = async () => {
       try {
@@ -38,10 +40,20 @@ const NavBar = () => {
       }
     }
 
+    const fetchHabitat = async () => {
+      try {
+        const response = await HabitatService.getAllHabitat();
+        setHabitats(response.data.results);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
     useEffect(() => {
       fetchTypes();
       fetchGenerations();
       fetchVersions();
+      fetchHabitat();
     }, [])
 
     return <>
@@ -73,6 +85,14 @@ const NavBar = () => {
                 return <NavDropdown.Item key={version.name + "nav"} 
                   onClick={() => {navigate("/version/"+version.name)}} >
                   {version.name}
+                </NavDropdown.Item>
+              })}
+            </NavDropdown>
+            <NavDropdown title="Habitats" id="basic-nav-dropdown-ter">
+              {habitats.map((habitat) => {
+                return <NavDropdown.Item key={habitat.name + "nav"} 
+                  onClick={() => {navigate("/habitat/"+habitat.name)}} >
+                  {habitat.name}
                 </NavDropdown.Item>
               })}
             </NavDropdown>
