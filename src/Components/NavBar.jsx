@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import TypeService from "../Services/TypeService";
 import { useEffect, useState } from "react";
 import GenerationService from "../Services/GenerationService";
+import VersionService from "../Services/VersionService";
 
 const NavBar = () => {
     const navigate = useNavigate();
     const [types, setTypes] = useState([]);
     const [generations, setGenerations] = useState([]);
+    const [versions, setVersions] = useState([]);
 
     const fetchTypes = async () => {
       try {
@@ -27,9 +29,19 @@ const NavBar = () => {
       }
     }
 
+    const fetchVersions = async () => {
+      try {
+        const response = await VersionService.getAllVersion();
+        setVersions(response.data.results);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
     useEffect(() => {
       fetchTypes();
       fetchGenerations();
+      fetchVersions();
     }, [])
 
     return <>
@@ -53,6 +65,14 @@ const NavBar = () => {
                 return <NavDropdown.Item key={generation.name + "nav"} 
                   onClick={() => {navigate("/generation/"+generation.name)}} >
                   {generation.name}
+                </NavDropdown.Item>
+              })}
+            </NavDropdown>
+            <NavDropdown title="Versions" id="basic-nav-dropdown-ter">
+              {versions.map((version) => {
+                return <NavDropdown.Item key={version.name + "nav"} 
+                  onClick={() => {navigate("/version/"+version.name)}} >
+                  {version.name}
                 </NavDropdown.Item>
               })}
             </NavDropdown>

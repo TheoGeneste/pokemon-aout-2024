@@ -11,7 +11,6 @@ const PokemonByType = () => {
     const fetchPokemonByType = async () => {
         try {
             const response = await PokemonService.getPokemonByType(name)
-            console.log(response.data);
             setType(response.data);
         } catch (error) {
             console.log(error);

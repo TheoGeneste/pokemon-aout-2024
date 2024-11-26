@@ -19,7 +19,7 @@ const PokemonByGeneration = () => {
 
     useEffect(() => {
         fetchPokemonByGeneration();
-    }, []);
+    }, [name]);
 
     return <Container className="d-flex flex-column align-items-center">
         <h1>{generation.names && generation.names[3].name}</h1>

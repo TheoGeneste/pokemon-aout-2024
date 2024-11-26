@@ -8,6 +8,7 @@ import PokemonsPagination from './Pages/PokemonsPagination'
 import NavBar from './Components/NavBar'
 import PokemonByType from './Pages/PokemonByType'
 import PokemonByGeneration from './Pages/PokemonByGeneration'
+import PokemonByVersion from './Pages/PokemonByVersion'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/pokemon/:name" element={<PokemonDetails />} />
         <Route path="/type/:name" element={<PokemonByType />} />
         <Route path='/generation/:name' element={<PokemonByGeneration />} />
+        <Route path='/version/:name' element={<PokemonByVersion />} />
       </Routes>
      </BrowserRouter>
     </>
